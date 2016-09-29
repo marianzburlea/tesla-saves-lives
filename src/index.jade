@@ -5,14 +5,13 @@ include _modules/link/link
 block meta
   - title = site.data.info.meta.title
   - description = site.data.info.meta.description
+  - subtitle = site.data.info.meta.subtitle
 
 block content
-  .container
-    .yeogurt-info
-      h1 Tesla saves lives
-      p.
-        Take a look at the
-        #[+link({text: 'cool documentation'})(href='https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---')]
-        and start mixing up something awesome.
-      p
-        img.logo(src="images/yeogurt-swirl.png", width="75px")
+  .parallax
+    .parallax-layer.parallax-layer-back
+      h1 #{title}
+    .parallax-layer.parallax-layer-base
+      h2 #{subtitle}
+    .parallax-layer.parallax-layer-deep
+      h3 #{description}

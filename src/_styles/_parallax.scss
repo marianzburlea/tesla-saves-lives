@@ -1,0 +1,41 @@
+/* Here is where the magic happens */
+.parallax {
+  // Declare the height and perspective to lock the perspective to its centre
+  -webkit-perspective : 1px;
+  perspective         : 1px;
+  height              : 100vh;
+  overflow-x          : hidden;
+  overflow-y          : auto;
+}
+
+.parallax-layer {
+  position   : absolute;
+  top        : 0;
+  left       : 0;
+  bottom     : 0;
+  right      : 0;
+  padding    : 100vh 10vw;
+  text-align : center;
+
+  &:nth-child(2) {
+    padding : 110vh 10vw;
+  }
+
+  &:nth-child(3) {
+    padding : 110vh 10vw;
+  }
+}
+
+// Modifier classes used to determine the scrolling speed of the parallax element
+// The farther away it is, negative position, the slower it moves
+.parallax-layer-base {
+  transform : translateZ(0);
+}
+
+.parallax-layer-back {
+  transform : translateZ(-1px) scale(2);
+}
+
+.parallax-layer-deep {
+  transform : translateZ(-2px) scale(3);
+}
