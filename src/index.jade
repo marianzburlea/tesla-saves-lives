@@ -1,0 +1,18 @@
+extends _layouts/base
+
+include _modules/link/link
+
+block meta
+  - title = site.data.info.meta.title
+  - description = site.data.info.meta.description
+
+block content
+  .container
+    .yeogurt-info
+      h1 Tesla saves lives
+      p.
+        Take a look at the
+        #[+link({text: 'cool documentation'})(href='https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---')]
+        and start mixing up something awesome.
+      p
+        img.logo(src="images/yeogurt-swirl.png", width="75px")
