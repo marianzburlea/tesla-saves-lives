@@ -30,8 +30,8 @@
   position : relative;
   height: 100vh;
   transform-style: preserve-3d;
-  -webkit-transform: translate3d(700px, 0, -800px) rotateY(30deg);
-  transform: translate3d(700px, 0, -800px) rotateY(30deg);
+  //-webkit-transform: translate3d(700px, 0, -800px) rotateY(30deg);
+  //transform: translate3d(700px, 0, -800px) rotateY(30deg);
 }
 
 // Modifier classes used to determine the scrolling speed of the parallax element
