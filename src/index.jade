@@ -8,10 +8,15 @@ block meta
   - subtitle = site.data.info.meta.subtitle
 block content
   - stories = site.data.info.story
-  .card
+  .content
     each story in stories
-      .card-group
+      .card
         h1 #{story.title}
         .card-body
           each line in story.lines
             h2 #{line}
+
+    .menu-wrapper
+      ul.menu
+        each story in stories
+          li.menu-li #{story.title}
