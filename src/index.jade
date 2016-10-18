@@ -10,6 +10,7 @@ block content
   - stories = site.data.info.story
   .content
     each story in stories
+      a(name="#{story.title}")
       .card
         h1 #{story.title}
         .card-body
@@ -19,4 +20,5 @@ block content
     .menu-wrapper
       ul.menu
         each story in stories
-          li.menu-li #{story.title}
+          li.menu-item
+            a.menu-link(href="##{story.title}") #{story.title}
