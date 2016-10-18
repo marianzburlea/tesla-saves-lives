@@ -6,20 +6,12 @@ block meta
   - title = site.data.info.meta.title
   - description = site.data.info.meta.description
   - subtitle = site.data.info.meta.subtitle
-
 block content
-  .parallax
-    .parallax-group
-      .parallax-layer.parallax-layer-back
-        h1 #{title}
-      .parallax-layer.parallax-layer-base
-        h2 #{subtitle}
-      .parallax-layer.parallax-layer-deep
-        h3 #{description}
-    .parallax-group
-      .parallax-layer.parallax-layer-back
-        h1 #{title}
-      .parallax-layer.parallax-layer-base
-        h2 #{subtitle}
-      .parallax-layer.parallax-layer-deep
-        h3 #{description}
+  - stories = site.data.info.story
+  .card
+    each story in stories
+      .card-group
+        h1 #{story.title}
+        .card-body
+          each line in story.lines
+            h2 #{line}

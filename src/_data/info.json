@@ -3,5 +3,92 @@
     "title": "Tesla saves lives",
     "description": "Tesla saved thousands of lives. You can save a life too!",
     "subtitle": "We need more heroes. You can be a hero too. Find out more about how you can become a hero, start saving lives and make the world a better place"
-  }
+  },
+  "story": [
+    {
+      "title": "The problem",
+      "lines": [
+          "Every year, toxic air pollution causes",
+          "5,500,000 early deaths worldwide,",
+          "40,000 in the UK, 9,000 in London."
+      ]
+    },
+    {
+      "title": "The numbers",
+      "lines": [
+          "There are more than 1.2 billion cars worldwide",
+          "that produce toxic air pollution, which cause",
+          "5,500,000 deaths all around the world."
+      ]
+    },
+    {
+      "title": "The math",
+      "lines": [
+          "Devide the number of cars to the total deaths number",
+          "to get that each group of 218 gasoline drivers are responsible",
+          "for the early death of one of their own."
+      ]
+    },
+    {
+      "title": "The light",
+      "lines": [
+          "By driving an electric car like Tesla,",
+          "each 218 EV owners negate that number and",
+          "save a life each year."
+      ]
+    },
+    {
+      "title": "Lives saved",
+      "lines": [
+          "Year sales, Make,    Number, years on the road, lives saved",
+          "2012,       Model S, 2650,   5,                 12 * 5  = 60",
+          "2013,       Model S, 22442,  4,                 103 * 4 = 412",
+          "2014,       Model S, 31655,  3,                 145 * 3 = 435",
+          "2015,       Model S, 50446,  3,                 231 * 2 = 462",
+          "2016,       Model S, 37984,  3,                 174 * 1 = 174",
+          "2015,       Model X, 212,    3,                 1 * 2   = 2",
+          "2016,       Model X, 15738,  3,                 72 * 1  = 1"
+      ]
+    },
+    {
+      "title": "Safety rating",
+      "lines": [
+          "Tesla Model S Achieves Best Safety Rating",
+          "of Any Car Ever Tested.",
+          "This and the autopilot makes",
+          "Tesla save more lives every day."
+      ]
+    },
+    {
+      "title": "Be a hero",
+      "lines": [
+          "Saving lives is a job for ones with the heart of a hero!",
+          "Be a hero and join Tesla family or the EV owners club."
+      ]
+    },
+    {
+      "title": "How",
+      "lines": [
+          "By a Model S or Model X today!",
+          "Any other EV alternative would do just fine.",
+          "Small pocket size? Check the upcoming Tesla model 3."
+      ]
+    },
+    {
+      "title": "Model 3",
+      "lines": [
+          "When the 400,000 preorders will be delivered",
+          "Just those Model 3 will save",
+          "1834 lives each year!"
+      ]
+    },
+    {
+      "title": "Spread the word",
+      "lines": [
+          "It's OK if you still can't touch.",
+          "You can save us spreading the word.",
+          "Be a hero! Save a life today!"
+      ]
+    }
+  ]
 }
