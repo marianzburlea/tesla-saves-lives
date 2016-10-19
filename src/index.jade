@@ -10,8 +10,7 @@ block content
   - stories = site.data.info.story
   .content
     each story in stories
-      a(name="#{story.title}")
-      .card
+      .card(id="#{story.title}")
         h1 #{story.title}
         .card-body
           each line in story.lines
