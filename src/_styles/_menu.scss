@@ -22,7 +22,7 @@ $class: "menu";
 	min-height: 3vh;
 	position: relative;
 	width: 8rem;
-	margin: 0;
+	margin: 0.8rem 0;
 
 	&:hover + .#{$class}-item .#{$class}-link {
 		width: 8.5rem;
