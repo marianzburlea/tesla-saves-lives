@@ -1,3 +1,19 @@
 .card:target {
 	background-color: lightgray;
 }
+
+.test {
+	width: 100px;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	right: 0px;
+	background-color: red;
+	transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+}
+
+@for $i from 1 through 10 {
+	.card:nth-of-type(#{$i}):target ~ .test {
+		right: 20px * $i;
+	}
+}
