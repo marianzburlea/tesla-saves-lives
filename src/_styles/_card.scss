@@ -1,5 +1,10 @@
+.card {
+	margin-left: 6rem;
+	margin-bottom: 2.5rem;
+}
+
 .card:target {
-	background-color: lightgray;
+	background-color: rgba(0, 0, 0, .1);
 }
 
 .test {

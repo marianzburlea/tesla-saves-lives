@@ -1,6 +1,8 @@
 // Normalize Styles
 // @import 'node_modules/normalize.css/normalize';
 
+@import "typography";
+@import "layout";
 @import "menu";
 @import "card";
 
@@ -12,8 +14,4 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-body {
-	overflow: hidden;
 }

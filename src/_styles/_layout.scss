@@ -1,0 +1,15 @@
+body {
+	// Google handwriting font
+	font-family: 'Kalam', cursive;
+
+	overflow: hidden;
+	background-color: #fff;
+
+	// The notebook background effect
+	background-image: 
+		// Notebook vertical line
+		linear-gradient(90deg, transparent 6rem, #abced4 6rem, #abced4 6.1rem, transparent 6.1rem),
+		// top line
+		linear-gradient(#eee .1em, transparent .1em);
+	background-size: 100% 2.5em;
+}
