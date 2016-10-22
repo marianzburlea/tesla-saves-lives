@@ -89,7 +89,8 @@
           "This website is built using",
           "only CSS3 and HTML5",
           "That's wright, no JavaScript",
-          "Author: google Marian Zburlea"
+          "Author: Marian Zburlea",
+          "Contact: google me"
       ]
     },
     {
@@ -101,12 +102,12 @@
       ]
     },
     {
-      "title": "Home",
+      "title": "Welcome",
       "class": "menu-item-black",
       "lines": [
           "Tesla saved",
           "1546 lives",
-          "and saves more every day"
+          "and saves 4 more every day"
       ]
     }
   ]

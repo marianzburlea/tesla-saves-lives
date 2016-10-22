@@ -6,7 +6,7 @@ $class: "menu";
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: center;
 	align-items: space-around;
 	padding: 0;
 	margin: 0;
@@ -14,6 +14,12 @@ $class: "menu";
 
 .#{$class}-input {
 	display: none;
+
+	@for $i from 1 through $total-pages {
+		&:nth-of-type(#{$i}):checked + .card {
+			left: 0vh;
+		}
+	}
 }
 
 .#{$class}-back-button {
@@ -87,7 +93,7 @@ $class: "menu";
 	position: relative;
 	width: $item-width;
 	height: $item-width;
-	margin: 1.2vw;
+	margin: 1vw;
 	background-color: $dark-purple;
 	border-radius: 0.2rem;
 	transition: .75s;
@@ -102,10 +108,9 @@ $class: "menu";
 
 	@for $i from 1 through $total-pages {
 		&:nth-of-type(#{$i}) {
-			transition-delay: 1s * $i / 50;
+			transition-delay: 0.025s * $i;
 		}
 	}
-
 }
 
 
