@@ -58,7 +58,7 @@ $class: "menu";
 }
 
 .#{$class}-background {
-	width: 200vh;
+	width: 100%;
 	height: 100%;
 	display: block;
 	position: fixed;
@@ -68,7 +68,6 @@ $class: "menu";
 	opacity: 0;
 	
 	##{$class}-back-button:checked + & {
-		width: 100vh;
 		background-color: $darken;
 		border-top-left-radius: 0%;
 		top: 0vh;
