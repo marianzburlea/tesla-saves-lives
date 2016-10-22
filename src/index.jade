@@ -27,7 +27,7 @@ block content
             h1 #{story.title}
             .card-body
               each line in story.lines
-                h2 #{line}
+                h2 !{line}
           section(class="menu-item #{className}")
             label.menu-link(href="##{story.title}" for="story-#{i}") #{story.title}
           - i++;
