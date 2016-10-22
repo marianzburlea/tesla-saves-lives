@@ -55,6 +55,10 @@ $class: "menu";
 
 ##{$class}-back-button {
 	display: none;
+
+	&:not(:checked) ~ .menu .menu-item {
+		transform: scaleX(0) scaleY(0);
+	}
 }
 
 .#{$class}-background {
@@ -64,7 +68,7 @@ $class: "menu";
 	position: fixed;
 	top: 50vh;
 	border-top-left-radius: 100%;
-	transition: 0.25s ease-out;
+	transition: 0.35s ease-out;
 	opacity: 0;
 	
 	##{$class}-back-button:checked + & {
@@ -79,10 +83,7 @@ $class: "menu";
 	position: relative;
 	width: $item-width;
 	height: $item-width;
-	justify-content: center;
-	align-items: center;
 	margin: 1.2vw;
-	display: flex;
 	background-color: $dark-purple;
 	border-radius: 0.2rem;
 	transition: .75s;
@@ -102,4 +103,8 @@ $class: "menu";
 .#{$class}-link {
 	text-decoration: none;
 	color: white;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }

@@ -1,6 +1,8 @@
 .card {
 	margin-left: 6rem;
 	margin-bottom: 2.5rem;
+	position: fixed;
+	left: 100vh;
 }
 
 .card:target {
