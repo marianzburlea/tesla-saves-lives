@@ -24,7 +24,7 @@ $class: "menu";
 	background-color: $dark-purple;
 	padding: 5vw;
 	padding-right: 1vw;
-	// text-align: right;
+	transition: 0.25s;
 	border-top-left-radius: 100%;
 	z-index: 99999;
 }
@@ -59,6 +59,10 @@ $class: "menu";
 	&:not(:checked) ~ .menu .menu-item {
 		transform: scaleX(0) scaleY(0);
 	}
+
+	&:checked  ~ .#{$class}-back-button {
+		bottom: -10vh;
+	}
 }
 
 .#{$class}-background {
@@ -79,7 +83,7 @@ $class: "menu";
 	}
 }
 
-.#{$class}-item {
+%#{$class}-item {
 	position: relative;
 	width: $item-width;
 	height: $item-width;
@@ -87,15 +91,28 @@ $class: "menu";
 	background-color: $dark-purple;
 	border-radius: 0.2rem;
 	transition: .75s;
+}
+
+.#{$class}-item {
+	@extend %#{$class}-item;
 
 	&:hover {
 		background-color: $dark-red;
 	}
+
+	@for $i from 1 through $total-pages {
+		&:nth-of-type(#{$i}) {
+			transition-delay: 1s * $i / 50;
+		}
+	}
+
 }
+
+
 
 // This varition is for "home" and "about" menu only
 .#{$class}-item-black {
-	@extend .#{$class}-item;
+	@extend %#{$class}-item;
 
 	background-color: $dark-blue;
 }
