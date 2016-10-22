@@ -83,11 +83,30 @@
       ]
     },
     {
+      "title": "About",
+      "class": "menu-item-black",
+      "lines": [
+          "This website is built using",
+          "only CSS3 and HTML5",
+          "That's wright, no JavaScript",
+          "Author: google Marian Zburlea"
+      ]
+    },
+    {
       "title": "Save a life",
       "lines": [
           "It's OK if you still can't touch.",
           "You can save us spreading the word.",
           "Be a hero! Save a life today!"
+      ]
+    },
+    {
+      "title": "Home",
+      "class": "menu-item-black",
+      "lines": [
+          "Tesla saved",
+          "1546 lives",
+          "and saves more every day"
       ]
     }
   ]

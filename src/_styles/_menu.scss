@@ -40,26 +40,27 @@ $class: "menu";
 	position: relative;
 	width: $item-width;
 	height: $item-width;
+	justify-content: center;
+	align-items: center;
 	margin: 1.2vw;
+	display: flex;
+	background-color: $dark-purple;
+	border-radius: 0.2rem;
+	transition: .75s;
+
+	&:hover {
+		background-color: $dark-red;
+	}
+}
+
+// This varition is for "home" and "about" menu only
+.#{$class}-item-black {
+	@extend .#{$class}-item;
+
+	background-color: $dark-blue;
 }
 
 .#{$class}-link {
-	border-radius: 0.2rem;
-	text-align: right;
-	white-space: nowrap;
-	text-align: center;
-	background-color: $dark-purple;
-	transition: .5s;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	text-decoration: none;
 	color: white;
-
-	&:hover {
-		background-color: $dark-blue;
-	}
 }
