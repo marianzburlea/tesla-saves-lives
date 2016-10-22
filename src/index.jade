@@ -9,16 +9,21 @@ block meta
 block content
   - stories = site.data.info.story
   .content
-    each story in stories
-      .card(id="#{story.title}")
-        h1 #{story.title}
-        .card-body
-          each line in story.lines
-            h2 #{line}
+    //- each story in stories
 
-    .test
     .menu-wrapper
-      ul.menu
+      input#menu-back-button(type="checkbox")
+      .menu-background
+      .menu
+        - i = 0;
         each story in stories
-          li(class="menu-item #{story.class}")
-            a.menu-link(href="##{story.title}") #{story.title}
+          .card(id="#{story.title}")
+            h1 #{story.title}
+            .card-body
+              each line in story.lines
+                h2 #{line}
+          input(type="radio" id="story-#{i}" name="stories").menu-input
+          div(class="menu-item #{story.class}")
+            label.menu-link(href="##{story.title}" for="story-#{i}") #{story.title}
+          - i++;
+      label.menu-back-button(for="menu-back-button") Menu
