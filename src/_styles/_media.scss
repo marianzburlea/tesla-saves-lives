@@ -1,0 +1,53 @@
+@media all and (orientation: landscape) {
+	$class: 'menu';
+
+	.#{$class}-link {
+		width: $item-height;
+		height: $item-height;
+		border: 1.5vh solid $white;
+		font-size: 10vh;
+	}
+
+	.#{$class}-back-button {
+		width: $item-height;
+		height: $item-height;
+		border: 1.5vh solid $white;
+		font-size: 7vh;
+	}
+
+	.#{$class}-label {
+		font-size: 3.6vh;
+	}
+
+	.#{$class}-label-content {
+		font-size: 4vh;
+		bottom: -7vh;
+	}
+
+	.#{$class}-back-button {
+		bottom: 7vh;
+		right: 4vh;
+	}
+
+	.#{$class}-item {
+		margin-right: 12vh;
+		margin-bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	h1 {
+	  font-size: 8vh;
+	}
+
+	h2 {
+	  font-size: 5vh;
+	}
+
+	number {
+	  font-weight: bold;
+	  font-size: 10vh;
+	}
+}

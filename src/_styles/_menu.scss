@@ -45,7 +45,7 @@ $class: "menu";
 	}
 
 	&:checked  ~ .#{$class}-back-button {
-		bottom: -20vh;
+		bottom: -50%;
 	}
 }
 
@@ -92,9 +92,8 @@ $class: "menu";
 	text-align: center;
 
 	@for $i from 1 through $total-pages {
-		&:nth-of-type(#{$i}) {
+		&:nth-of-type(#{$total-pages - $i}) {
 			transition-delay: 0.025s * $i;
-			text-decoration: #{$i};
 		}
 	}
 }
