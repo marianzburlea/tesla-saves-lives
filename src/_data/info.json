@@ -105,9 +105,9 @@
       "title": "Welcome",
       "class": "menu-item-black",
       "lines": [
-          "Tesla saved",
-          "1546 lives",
-          "and saves 4 more every day"
+          "Tesla saved more than",
+          "<number>1546</number> lives",
+          "and saves <number>4</number> more every day"
       ]
     }
   ]

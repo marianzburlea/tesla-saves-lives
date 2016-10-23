@@ -7,7 +7,6 @@ $class: "menu";
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	align-items: space-around;
 	padding: 0;
 	margin: 0;
 }
@@ -76,12 +75,8 @@ $class: "menu";
 
 %#{$class}-item {
 	position: relative;
-	width: $item-width;
-	height: $item-width;
-	margin: 1vw;
-	border-radius: 50%;
+	margin: 2vw;
 	transition: .75s;
-	border: 1.5vw solid $white;
 
 	@for $i from 1 through $total-pages {
 		&:nth-of-type(#{$i}) {
@@ -93,12 +88,8 @@ $class: "menu";
 .#{$class}-item {
 	@extend %#{$class}-item;
 
-	margin-bottom: 2rem;
+	margin-bottom: 4vw;
 	text-align: center;
-
-	&:hover {
-		background-color: $dark-red;
-	}
 
 	@for $i from 1 through $total-pages {
 		&:nth-of-type(#{$i}) {
@@ -110,7 +101,7 @@ $class: "menu";
 
 $colourIndex: 1;
 @each $colour, $value in $menu-colours {
-	section.#{$class}-item:nth-of-type(12n + #{$colourIndex}) {
+	section.#{$class}-item:nth-of-type(12n + #{$colourIndex}) label {
 		background-color: map-get($menu-colours, $colour);
 	}
 	.card:nth-of-type(12n + #{$colourIndex}) {
@@ -122,16 +113,19 @@ $colourIndex: 1;
 
 
 // This varition is for "home" and "about" menu only
-.#{$class}-item-black {
-	@extend %#{$class}-item;
+// .#{$class}-item-black {
+// 	@extend %#{$class}-item;
 
-	background-color: $dark-blue;
-}
+// 	background-color: $dark-blue;
+// }
 
 .#{$class}-link {
+	width: $item-width;
+	height: $item-width;
+	border-radius: 50%;
+	border: 1.5vw solid $white;
 	text-decoration: none;
 	color: $white;
-	height: 100%;
 	justify-content: center;
 	align-items: center;
 	display: flex;
@@ -156,8 +150,8 @@ $colourIndex: 1;
 	border-radius: 100%;
 	border: 1.5vw solid $white;
 	font-size: 10vw;
-	width: 30vw;
-	height: 30vw;
+	width: $item-width;
+	height: $item-width;
 	justify-content: center;
 	align-items: center;
 	display: flex;
@@ -166,7 +160,7 @@ $colourIndex: 1;
 .#{$class}-label-content {
 	font-size: 4vw;
 	display: inline-block;
-	width: 30vw;
+	width: $item-width;
 	position: absolute;
 	text-align: center;
 	bottom: -6vw;
