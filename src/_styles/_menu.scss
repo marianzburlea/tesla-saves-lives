@@ -1,8 +1,18 @@
 $class: "menu";
 
+%noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;           /* Non-prefixed version, currently
+	                              not supported by any browser */
+    cursor: crosshair;
+}
+
 .#{$class} {
 	list-style-type: none;
-	// pointer-events: auto;
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -60,7 +70,6 @@ $class: "menu";
 	opacity: 0;
 	
 	##{$class}-back-button:checked + & {
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2e3a44+0$dark-grey+100 */
 		background: $darken; /* Old browsers */
 		background: -moz-linear-gradient(top,  $darken 0%, $dark-grey 100%); /* FF3.6-15 */
 		background: -webkit-linear-gradient(top,  $darken 0%,$dark-grey 100%); /* Chrome10-25,Safari5.1-6 */
@@ -109,15 +118,6 @@ $colourIndex: 1;
 	$colourIndex: $colourIndex + 1;
 }
 
-
-
-// This varition is for "home" and "about" menu only
-// .#{$class}-item-black {
-// 	@extend %#{$class}-item;
-
-// 	background-color: $dark-blue;
-// }
-
 .#{$class}-link {
 	width: $item-width;
 	height: $item-width;
@@ -129,9 +129,13 @@ $colourIndex: 1;
 	align-items: center;
 	display: flex;
 	font-size: 10vw;
+	cursor: pointer;
 }
 
+
 .#{$class}-label {
+	@extend %noselect;
+
 	color: $white;
 	padding-top: 0.5rem;
 	font-size: 4vw;
@@ -154,6 +158,7 @@ $colourIndex: 1;
 	justify-content: center;
 	align-items: center;
 	display: flex;
+	cursor: pointer;
 }
 
 .#{$class}-label-content {
