@@ -25,13 +25,19 @@ $class: "menu";
 .#{$class}-back-button {
 	position: fixed;
 	bottom: 0;
+	width: 20vw;
+	height: 20vw;
+	line-height: 20vw;
 	right: 0;
 	color: $white;
 	background-color: $dark-purple;
-	padding: 5vw;
+	text-align: right;
 	padding-right: 1vw;
 	transition: 0.25s;
 	border-top-left-radius: 100%;
+	border-top: 1.5vw solid $black;
+	border-left: 1.5vw solid $black;
+	font-size: 5vw;
 }
 
 .#{$class}-wrapper {
@@ -58,7 +64,7 @@ $class: "menu";
 	}
 
 	&:checked  ~ .#{$class}-back-button {
-		bottom: -10vh;
+		bottom: -20vh;
 	}
 }
 
@@ -91,10 +97,9 @@ $class: "menu";
 	width: $item-width;
 	height: $item-width;
 	margin: 1vw;
-	// background-color: $dark-purple;
 	border-radius: 50%;
 	transition: .75s;
-	border: 0.3rem solid $white;
+	border: 1.5vw solid $white;
 
 	@for $i from 1 through $total-pages {
 		&:nth-of-type(#{$i}) {
@@ -107,7 +112,6 @@ $class: "menu";
 	@extend %#{$class}-item;
 
 	margin-bottom: 2rem;
-	font-size: 0.8rem;
 	text-align: center;
 
 	&:hover {
@@ -122,13 +126,13 @@ $class: "menu";
 	}
 }
 
-	$colourIndex: 1;
-	@each $colour, $value in $menu-colours {
-		section.#{$class}-item:nth-of-type(12n + #{$colourIndex}) {
-			background-color: map-get($menu-colours, $colour);
-		}
-		$colourIndex: $colourIndex + 1;
+$colourIndex: 1;
+@each $colour, $value in $menu-colours {
+	section.#{$class}-item:nth-of-type(12n + #{$colourIndex}) {
+		background-color: map-get($menu-colours, $colour);
 	}
+	$colourIndex: $colourIndex + 1;
+}
 
 
 
@@ -146,10 +150,11 @@ $class: "menu";
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	font-size: 2.5rem;
+	font-size: 12vw;
 }
 
 .#{$class}-label {
 	color: $white;
 	padding-top: 0.5rem;
+	font-size: 4vw;
 }
