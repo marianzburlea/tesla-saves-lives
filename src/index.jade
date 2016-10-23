@@ -25,8 +25,8 @@ block content
             input(type="radio" id="story-#{i}" name="stories").menu-input
           .card(id="#{story.title}")
             - var storyClass = story.title.replace(/\s/g, '-').toLowerCase();
-            h1 #{story.title}
             .card-body
+              h1 #{story.title}
               each line in story.lines
                 h2 !{line}
           section(class="menu-item #{className}")
