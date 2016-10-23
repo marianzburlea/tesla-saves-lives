@@ -32,7 +32,6 @@ $class: "menu";
 	padding-right: 1vw;
 	transition: 0.25s;
 	border-top-left-radius: 100%;
-	z-index: 99999;
 }
 
 .#{$class}-wrapper {
@@ -82,7 +81,13 @@ $class: "menu";
 	opacity: 0;
 	
 	##{$class}-back-button:checked + & {
-		background-color: $darken;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2e3a44+0$dark-grey+100 */
+		background: $darken; /* Old browsers */
+		background: -moz-linear-gradient(top,  $darken 0%, $dark-grey 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(top,  $darken 0%,$dark-grey 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom,  $darken 0%,$dark-grey 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$darken', endColorstr='$dark-grey',GradientType=0 ); /* IE6-9 */
+
 		border-top-left-radius: 0%;
 		top: 0vh;
 		opacity: 1;
@@ -95,8 +100,9 @@ $class: "menu";
 	height: $item-width;
 	margin: 1vw;
 	background-color: $dark-purple;
-	border-radius: 0.2rem;
+	border-radius: 50%;
 	transition: .75s;
+	border: 0.3rem solid $white;
 }
 
 .#{$class}-item {
