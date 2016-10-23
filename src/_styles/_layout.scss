@@ -3,13 +3,5 @@ body {
 	font-family: 'Open Sans', sans-serif;
 
 	// overflow: hidden;
-	background-color: #fff;
-
-	// The notebook background effect
-	background-image: 
-		// Notebook vertical line
-		linear-gradient(90deg, transparent 3rem, #abced4 3rem, #abced4 3.1rem, transparent 3.1rem),
-		// top line
-		linear-gradient(#eee .1em, transparent .1em);
-	background-size: 100% 2.5em;
+	background-color: $darken;
 }

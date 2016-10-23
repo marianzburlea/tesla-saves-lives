@@ -33,4 +33,5 @@ block content
             label(href="##{story.title}" for="story-#{i}" class="menu-link tsl-#{storyClass}")
             div.menu-label #{story.title}
           - i++;
-      label.menu-back-button(for="menu-back-button") Menu
+      label.menu-back-button.tsl-menu(for="menu-back-button")
+        span.menu-label-content Menu

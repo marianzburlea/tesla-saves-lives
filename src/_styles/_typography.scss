@@ -3,6 +3,7 @@ h1, h2 {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+  display: block;
 }
 
 h1 {
@@ -30,11 +31,11 @@ h1 {
 
 @font-face {
   font-family: 'tesla-saves-lives';
-  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk');
-  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/tesla-saves-lives.ttf?ltstyk') format('truetype'),
-    url('#{$icomoon-font-path}/tesla-saves-lives.woff?ltstyk') format('woff'),
-    url('#{$icomoon-font-path}/tesla-saves-lives.svg?ltstyk#tesla-saves-lives') format('svg');
+  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk1');
+  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk1#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.ttf?ltstyk1') format('truetype'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.woff?ltstyk1') format('woff'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.svg?ltstyk1#tesla-saves-lives') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -115,3 +116,8 @@ h1 {
   }
 }
 
+.tsl-menu {
+  &:before {
+    content: $tsl-menu;
+  }
+}

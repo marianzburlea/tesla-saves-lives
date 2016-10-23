@@ -1191,9 +1191,12 @@
         },
         {
           "ligatures": "menu3, options3",
-          "name": "menu3",
+          "name": "menu",
           "id": 191,
-          "order": 0
+          "order": 21,
+          "prevSize": 64,
+          "code": 59839,
+          "tempChar": ""
         },
         {
           "ligatures": "menu4, options4",
@@ -1640,7 +1643,7 @@
           "order": 12,
           "prevSize": 64,
           "code": 59913,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "plus, add",
@@ -2135,7 +2138,7 @@
           "order": 13,
           "prevSize": 64,
           "code": 59995,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "font, typeface",
@@ -2966,7 +2969,7 @@
           "order": 15,
           "prevSize": 64,
           "code": 60132,
-          "tempChar": ""
+          "tempChar": ""
         },
         {
           "ligatures": "html-five2, w3c2",

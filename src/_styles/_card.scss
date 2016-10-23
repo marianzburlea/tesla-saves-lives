@@ -1,24 +1,12 @@
 .card {
-	margin-left: 3.5rem;
-	margin-right: 0.5rem;
-	margin-bottom: 2.5rem;
 	position: fixed;
 	left: 100vh;
 	top: 0;
 	transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
+	width: 100%;
+	height: 100%;
+	color: $white;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
-
-.card:target {
-	// background-color: rgba(0, 0, 0, .1);
-	text-decoration: underline;
-}
-
-// .test {
-// 	width: 100px;
-// 	height: 100px;
-// 	position: fixed;
-// 	top: 0;
-// 	right: 0px;
-// 	background-color: red;
-// 	transition: all 0.6s cubic-bezier(.87,-.41,.19,1.44);
-// }
