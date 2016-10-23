@@ -17,3 +17,91 @@ h1 {
 h2 {
 	font-weight: normal;
 }
+
+@font-face {
+  font-family: 'tesla-saves-lives';
+  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk');
+  src:  url('#{$icomoon-font-path}/tesla-saves-lives.eot?ltstyk#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.ttf?ltstyk') format('truetype'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.woff?ltstyk') format('woff'),
+    url('#{$icomoon-font-path}/tesla-saves-lives.svg?ltstyk#tesla-saves-lives') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="tsl-"], [class*=" tsl-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tesla-saves-lives' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.tsl-welcome {
+  &:before {
+    content: $tsl-welcome;
+  }
+}
+.tsl-the-math {
+  &:before {
+    content: $tsl-the-math;
+  }
+}
+.tsl-save-a-life {
+  &:before {
+    content: $tsl-save-a-life;
+  }
+}
+.tsl-lives-saved {
+  &:before {
+    content: $tsl-lives-saved;
+  }
+}
+.tsl-the-problem {
+  &:before {
+    content: $tsl-the-problem;
+  }
+}
+.tsl-safety-rating {
+  &:before {
+    content: $tsl-safety-rating;
+  }
+}
+.tsl-be-a-hero {
+  &:before {
+    content: $tsl-be-a-hero;
+  }
+}
+.tsl-the-numbers {
+  &:before {
+    content: $tsl-the-numbers;
+  }
+}
+.tsl-model-3 {
+  &:before {
+    content: $tsl-model-3;
+  }
+}
+.tsl-how {
+  &:before {
+    content: $tsl-how;
+  }
+}
+.tsl-the-light {
+  &:before {
+    content: $tsl-the-light;
+  }
+}
+.tsl-about {
+  &:before {
+    content: $tsl-about;
+  }
+}
+

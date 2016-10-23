@@ -24,11 +24,13 @@ block content
           else
             input(type="radio" id="story-#{i}" name="stories").menu-input
           .card(id="#{story.title}")
+            - var storyClass = story.title.replace(/\s/g, '-').toLowerCase();
             h1 #{story.title}
             .card-body
               each line in story.lines
                 h2 !{line}
           section(class="menu-item #{className}")
-            label.menu-link(href="##{story.title}" for="story-#{i}") #{story.title}
+            label(href="##{story.title}" for="story-#{i}" class="menu-link tsl-#{storyClass}")
+            div.menu-label #{story.title}
           - i++;
       label.menu-back-button(for="menu-back-button") Menu
