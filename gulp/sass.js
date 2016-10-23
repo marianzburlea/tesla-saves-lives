@@ -15,7 +15,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
       .pipe(plugins.plumber())
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass({
-        outputStyle: 'expanded',
+        outputStyle: 'compressed',
         precision: 10,
         includePaths: [
           path.join(dirs.source, dirs.styles),
