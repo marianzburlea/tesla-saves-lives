@@ -75,6 +75,7 @@
       "destination": "build",
       "temporary": "tmp",
       "//": "Directories relative to `source` directory",
+      "fonts": "_fonts",
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
