@@ -47,6 +47,9 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
       console.log('\n==== DEBUG: package.json config being injected to templates ====');
       console.log(config);
     }
+    if (args.print) {
+      console.log(path.join(dirs.destination, 'styles/main.css'));
+    }
 
     return gulp.src([
       path.join(dirs.source, '**/*.jade'),
@@ -63,6 +66,13 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         site: {
           data: siteData
         }
+      }
+    }))
+    .pipe(plugins.inject(gulp.src([path.join(dirs.destination, 'styles/main.css')]), {
+      starttag: '<!-- inject:css -->',
+      transform: function (filePath, file) {
+        // return file contents as string 
+        return file.contents.toString('utf8')
       }
     }))
     .pipe(plugins.htmlmin({
