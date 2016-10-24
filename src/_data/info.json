@@ -9,7 +9,7 @@
       "title": "The problem",
       "lines": [
           "Every year, toxic air pollution causes",
-          "5,500,000 early deaths worldwide,",
+          "about 5,500,000 early deaths worldwide,",
           "40,000 in the UK, 9,000 in London."
       ]
     },
@@ -88,9 +88,10 @@
       "lines": [
           "This website is built using",
           "only CSS3 and HTML5",
-          "That's wright, no JavaScript",
+          "That's right, no JavaScript",
           "Author: Marian Zburlea",
-          "Contact: google me"
+          "Contact: google me",
+          "<a href=https://github.com/marianzburlea/tesla-saves-lives target=_blank>Github project</a>"
       ]
     },
     {
