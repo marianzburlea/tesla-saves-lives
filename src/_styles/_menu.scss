@@ -50,7 +50,7 @@ $class: "menu";
 ##{$class}-back-button {
 	display: none;
 
-	&:not(:checked) ~ .menu .menu-item {
+	&:not(:checked) ~ .#{$class} .#{$class}-item {
 		transform: scaleX(0) scaleY(0);
 	}
 
@@ -96,6 +96,7 @@ $class: "menu";
 
 .#{$class}-item {
 	@extend %#{$class}-item;
+	@extend %willchange;
 
 	margin-bottom: 4vw;
 	text-align: center;
@@ -130,6 +131,7 @@ $colourIndex: 1;
 	display: flex;
 	font-size: 10vw;
 	cursor: pointer;
+	outline: none;
 }
 
 
