@@ -1,5 +1,7 @@
 # Tesla Saves Lives readme
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/marianzburlea/tesla-saves-lives.svg)](https://greenkeeper.io/)
+
 Generated on 2016-09-29 using
 [generator-yeogurt@1.5.3](https://github.com/larsonjj/generator-yeogurt)
 
