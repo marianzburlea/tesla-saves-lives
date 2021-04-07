@@ -1,47 +1,87 @@
 'use strict';
+import gulpConfig from './util/config';
 
-import path from 'path';
+const watch = ({ gulp, plugins, args, config, browserSync, taskTarget }) => {
+  const dir = config.directory;
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-  let dirs = config.directories;
-
-  // Watch task
+  // Gulp watch task
   gulp.task('watch', () => {
+    console.clear();
+
     if (!args.production) {
-      // Styles
-      gulp.watch([
-        path.join(dirs.source, dirs.styles, '**/*.{scss,sass}'),
-        path.join(dirs.source, dirs.modules, '**/*.{scss,sass}')
-      ], ['sass']);
+      browserSync.init({
+        server: taskTarget,
+        notify: false,
+        plugins: ['bs-eslint-message'],
+        open: config.autoLaunchBrowser
+      });
 
-      // Jade Templates
-      gulp.watch([
-        path.join(dirs.source, '**/*.jade'),
-        path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
-      ], ['jade']);
+      // Pug templates
+      gulp.watch(
+        [
+          `./${dir.source}/**/*.pug`,
+          `./${dir.source}/${dir.data}/**/*.{json,yml,yaml}`
+        ],
+        gulp.series('pug')
+      );
 
-      // Copy
+      // JS
       gulp.watch([
-        path.join(dirs.source, '**/*'),
-        '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
-        '!' + path.join(dirs.source, '**/*.jade')
-      ], ['copy']);
+        `./${dir.source}/${dir.asset}/js/*.js`,
+      ], gulp.series('copy', 'pug'));
 
-      // Images
-      gulp.watch([
-        path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}')
-      ], ['imagemin']);
 
-      // Fonts
-      gulp.watch([
-        path.join(dirs.source, dirs.fonts, '**/*.{eot,svg,ttf,woff,woff2}')
-      ], ['fonts']);
+      // Template
+      dir.templateCollection.map(folderName => {
+        gulp.watch(
+          [
+            `./${dir.source}/_${folderName}/**/*.json`,
+            `./${dir.source}/_${folderName}/**/template.pug`,
+            `./${dir.source}/${dir.layout}/**/*.pug`,
+            `./${dir.source}/${dir.component}/mixin/**/*.pug`
+          ],
+          gulp.series('template')
+        );
+      });
 
-      // All other files
-      gulp.watch([
-        path.join(dirs.temporary, '**/*'),
-        '!' + path.join(dirs.temporary, '**/*.{css,map,html,js}')
-      ]).on('change', browserSync.reload);
+      // Sass style
+      gulp.watch(
+        [
+          `./${dir.source}/**/*.{scss,sass}`,
+          `./${dir.source}/${dir.component}/**/*.{scss,sass}`
+        ],
+        gulp.series('sass')
+      );
+
+      // Font files
+      gulp.watch(
+        `./${dir.source}/${dir.asset}/${dir.font}/${
+          gulpConfig.fileExpression.font
+        }`,
+        gulp.series('font')
+      );
+
+      // Image files
+      gulp.watch(
+        `./${dir.source}/${dir.asset}/${dir.image}/${
+          gulpConfig.fileExpression.image
+        }`,
+        gulp.series('image')
+      );
+
+      // copy files
+      gulp.watch(
+        `./${dir.source}/${dir.asset}/${gulpConfig.fileExpression.copy}`,
+        gulp.series('copy', browserSync.reload)
+      );
+
+      // embed.css
+      gulp.watch([`./${taskTarget}/embed.css`], gulp.series('pug'));
+
+      // HTML
+      gulp.watch([`./${taskTarget}/**/*.html`], browserSync.reload);
     }
   });
-}
+};
+
+export default watch;

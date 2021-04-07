@@ -1,77 +1,130 @@
 'use strict';
+require("@babel/register")
 
-import path from 'path';
+// GUlp is a simple platform-agnostic toolkit that helps you automate painful
+// and time-consuming tasks in your workflow
 import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
+// browser-sync - Live CSS Reload & Browser Syncing
 import browserSyncLib from 'browser-sync';
-import pjson from './package.json';
+// minimist - argument parser without all the fanciful decoration
 import minimist from 'minimist';
-import wrench from 'wrench';
+// gulp-load-plugins - Loads gulp plugins from package dependencies and attaches
+// them to an object of your choice.
+import gulpLoadPlugins from 'gulp-load-plugins';
 
-// Load all gulp plugins based on their names
-// EX: gulp-copy -> copy
-const plugins = gulpLoadPlugins();
-// Create karma server
-const KarmaServer = require('karma').Server;
+// Import package.json to grab and use the config property
+import packageJsonData from './package.json';
 
-const defaultNotification = function(err) {
-    return {
-        subtitle: err.plugin,
-        message: err.message,
-        sound: 'Funk',
-        onLast: true,
-    };
-};
+import clean from './gulp/clean';
+import copy from './gulp/copy';
+import copyIcon from './gulp/copy-icon';
+import deploy from './gulp/deploy';
+import font from './gulp/font';
+import image from './gulp/image';
+import pug from './gulp/pug';
+import sass from './gulp/sass';
+import template from './gulp/template';
+import watch from './gulp/watch';
+import flip from './gulp/flip';
+import { printCompile, getBaseUrl } from './gulp/util/util.js';
 
-let config = Object.assign({}, pjson.config, defaultNotification);
+global.compileMode = 'all';
 
-let args = minimist(process.argv.slice(2));
-let dirs = config.directories;
-let taskTarget = args.production ? dirs.destination : dirs.temporary;
+const config = Object.assign({}, packageJsonData.config);
+const args = minimist(process.argv.slice(2));
+const dir = config.directory;
+const taskTarget = args.production ? `${dir.production}-haha` : dir.development;
 
 // Create a new browserSync instance
-let browserSync = browserSyncLib.create();
+const browserSync = browserSyncLib.create();
 
-// This will grab all js in the `gulp` directory
-// in order to load all gulp tasks
-wrench.readdirSyncRecursive('./gulp').filter((file) => {
-  return (/\.(js)$/i).test(file);
-}).map(function(file) {
-  require('./gulp/' + file)(gulp, plugins, args, config, taskTarget, browserSync);
+// Load gulp plugins
+const plugins = gulpLoadPlugins({
+  // when set to true, the plugin will log info to console.
+  // Useful for bug reporting and issue debugging
+  DEBUG: false
 });
 
-// Default task
-gulp.task('default', ['clean'], () => {
-  gulp.start('build');
+// Read all files from the gulp folder and load all gulp tasks
+// fs.readdirSync('./gulp')
+//   .filter(fileName => /\.(js)$/i.test(fileName))
+//   .map(fileName => fileName.split('.').reduce(a=>a)());
+const baseUrl = getBaseUrl(args, config)
+const taskOptionList = { gulp, config, args, taskTarget, plugins, browserSync, baseUrl };
+clean(taskOptionList);
+copy(taskOptionList);
+copyIcon(taskOptionList);
+deploy(taskOptionList);
+font(taskOptionList);
+image(taskOptionList);
+pug(taskOptionList);
+sass(taskOptionList);
+template(taskOptionList);
+watch(taskOptionList);
+flip(taskOptionList);
+
+// Server task with watch
+gulp.task(
+  'dev',
+  gulp.series(
+    'clean:development',
+    'font',
+    'copy',
+    'copyIcon',
+    'image',
+    'sass',
+    'pug',
+    'template',
+    'watch'
+  )
+);
+
+// Build production ready code
+gulp.task(
+  'build',
+  gulp.series(
+    'clean:production',
+    'font',
+    'copy',
+    'copyIcon',
+    'image',
+    'sass',
+    'pug',
+    'template',
+    'flip'
+  )
+);
+
+// Default gulp task
+gulp.task('default', () => {
+  console.log('Default gulp task');
 });
+if (!args.production) {
 
-// Build production-ready code
-gulp.task('build', [
-  'copy',
-  'imagemin',
-  'fonts',
-  'jade',
-  'sass',
-  'browserify'
-]);
+  const readline = require('readline');
+  readline.emitKeypressEvents(process.stdin);
+  if (process.stdin.setRawMode){
+    process.stdin.setRawMode(true)
+  }
 
-// Server tasks with watch
-gulp.task('serve', [
-  'imagemin',
-  'fonts',
-  'copy',
-  'jade',
-  'sass',
-  'browserify',
-  'browserSync',
-  'watch'
-]);
-
-// Testing
-gulp.task('test', ['eslint'], (done) => {
-  new KarmaServer({
-    configFile: path.join(__dirname, '/karma.conf.js'),
-    singleRun: !args.watch,
-    autoWatch: args.watch
-  }, done).start();
-});
+  process.stdin.on('keypress', (str, key) => {
+    if (key.name === 'a') {
+      compileMode = 'all';
+    }
+    if (key.name === 'c') {
+      compileMode = 'current';
+    }
+    if (key.ctrl && key.name === 'c') {
+      process.exit();
+      console.clear();
+    } 
+    else {
+      // compile all
+      // console.clear();
+      // console.log(`You pressed the '${str}' key`);
+      // console.log();
+      // console.log(key);
+    }
+    printCompile(compileMode, args);
+  });
+}

@@ -3,12 +3,27 @@
 import path from 'path';
 import del from 'del';
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-  let dirs = config.directories;
+const clean = ({
+  gulp,
+  config,
+  taskTarget,
+}) => {
+  const dir = config.directory;
 
-  // Clean
-  gulp.task('clean', del.bind(null, [
-    path.join(dirs.temporary),
-    path.join(dirs.destination)
+  // clean development project
+  gulp.task('clean:development', del.bind(null, [
+    path.join(dir.development)
   ]));
-}
+
+  // clean development project
+  gulp.task('clean:production', del.bind(null, [
+    path.join(taskTarget)
+  ]));
+
+  // clean development project
+  gulp.task('clean:ghpages', del.bind(null, [
+    path.join(dir.ghpages)
+  ]));
+};
+
+export default clean;

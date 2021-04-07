@@ -2,39 +2,88 @@
 
 import path from 'path';
 import autoprefixer from 'autoprefixer';
-import gulpif from 'gulp-if';
+import { printError, fixWindows10GulpPathIssue, printCompile } from './util/util';
 
-export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-  let dirs = config.directories;
-  let entries = config.entries;
-  let dest = path.join(taskTarget, dirs.styles.replace(/^_/, ''));
+const sass = ({
+  gulp,
+  plugins,
+  args,
+  config,
+  taskTarget,
+  browserSync,
+  baseUrl
+}) => {
+  const dir = config.directory;
+  const { entry } = config;
+  let cssPath = [];
 
-  // Sass compilation
+  if (entry.css.external) {
+    cssPath.push(path.join(dir.source, entry.cssExternal));
+  }
+  if (entry.css.embed) {
+    cssPath.push(path.join(dir.source, entry.cssEmbed));
+  }
+
+  if (entry.cssModular) {
+    cssPath = [
+      `./${dir.source}/**/*.{scss,sass}`,
+      `!./${dir.source}/**/\_*.{scss,sass}`
+    ]
+  }
+
+  // Compile sass
   gulp.task('sass', () => {
-    gulp.src(path.join(dirs.source, dirs.styles, entries.css))
-      .pipe(plugins.plumber())
+    printCompile(compileMode, args);
+    return gulp.src(cssPath)
+      // Only deal with files that change in the pipeline
+      .pipe(plugins.plumber({
+        errorHandler: plugins.notify.onError({
+          title: 'Error converting SASS',
+          message: 'Error: <%= error.message %>'
+        })
+      }
+      ))
+      // .pipe(plugins.cached())
+      .pipe(plugins.sassVariables({
+        $baseUrl: baseUrl
+      }))
       .pipe(plugins.sourcemaps.init())
       .pipe(plugins.sass({
-        outputStyle: 'compressed',
+        outputStyle: args.production ? 'compressed' : 'expanded',
         precision: 10,
+        sync: true,
         includePaths: [
-          path.join(dirs.source, dirs.styles),
-          path.join(dirs.source, dirs.modules)
+          path.join(dir.source),
+          path.join(dir.source, dir.component)
         ]
       }))
-      .on('error', function(err) {
-        plugins.util.log(err);
+      // .pipe(plugins.notify({
+      //   title: 'Pug Starter - CodeTap',
+      //   message: 'Converting (sass|scss) into beautiful CSS'
+      // }))
+      .on('error', function (error) {
+        plugins.sass.logError;
+        browserSync.notify(printError(error), 25000);
+        console.log(error);
+        this.emit('end');
       })
-      .on('error', plugins.notify.onError(config.defaultNotification))
-      .pipe(plugins.postcss([autoprefixer({browsers: ['last 2 version', '> 5%', 'safari 5', 'ios 6', 'android 4']})]))
-      .pipe(plugins.rename(function(path) {
-        // Remove 'source' directory as well as prefixed folder underscores
-        // Ex: 'src/_styles' --> '/styles'
-        path.dirname = path.dirname.replace(dirs.source, '').replace('_', '');
+      .pipe(plugins.postcss([
+        autoprefixer({
+          // turn off notification for IE grid support
+          grid: false
+        })
+      ]))
+
+      // Fix for Windows 10 and gulp acting crazy
+      .pipe(plugins.rename(file => {
+        const dest = taskTarget;
+        fixWindows10GulpPathIssue({ file, dest, plugins, config })
       }))
-      .pipe(gulpif(args.production, plugins.cssnano({rebase: false})))
+
       .pipe(plugins.sourcemaps.write('./'))
-      .pipe(gulp.dest(dest))
-      .pipe(browserSync.stream({match: '**/*.css'}));
+      .pipe(gulp.dest(taskTarget.replace(/\_/, '')))
+      .pipe(browserSync.stream({ match: '**/*.css' }));
   });
-}
+};
+
+export default sass;
